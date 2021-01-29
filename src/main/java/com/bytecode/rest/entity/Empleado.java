@@ -22,8 +22,23 @@ public class Empleado implements Serializable {
 
     private boolean active;
 
+    private String correo;
+
+    private String contrasena;
+
     @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Bitacora> bitacoras;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Rol> roles;
+
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
+    }
 
     public int getIdEmpleado() {
         return idEmpleado;
@@ -51,6 +66,22 @@ public class Empleado implements Serializable {
 
     public String getRtn() {
         return rtn;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public void setRtn(String rtn) {
